@@ -10,13 +10,23 @@ public class Player : MonoBehaviour
     public float missileForce = 1f;
     public float missieDestroyTime= 5f;
     public float missileCooldown = 3f;
-    private float missileTimer;
+    public float missileTimer;
     private bool fired = false;
     private Rigidbody2D playerRb;
+
+    public static Player instance;
 
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     // Start is called before the first frame update
     void Start()
