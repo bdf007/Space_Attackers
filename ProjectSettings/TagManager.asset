@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerMissile
   - EnemyMissile
+  - bounds
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float missileTimer;
     private bool fired = false;
     public GameObject explosionPrefab;
+    public AudioSource explosionSource;
     private Rigidbody2D playerRb;
 
     public static Player instance;
@@ -61,6 +62,8 @@ public class Player : MonoBehaviour
                 fired = true;
                 missileTimer = missileCooldown;
                 GameObject missile = Instantiate(missilePrefab, transform.position, Quaternion.identity);
+                // play the explosion sound
+                explosionSource.Play();
                 missile.transform.SetParent(transform.parent);
                 missile.transform.position = transform.position;
                 missile.GetComponent<Rigidbody2D>().velocity = new Vector2(0, missileForce);
