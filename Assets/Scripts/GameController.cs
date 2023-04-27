@@ -8,6 +8,13 @@ public class GameController : MonoBehaviour
     public float shootingSpeed = 2f;
     public GameObject enemyMissilePrefab;
 
+    public GameObject enemyContainer;
+    public float movingInterval = 0.5f;
+    public float movingDistance = 0.1f;
+    public float horizontalLimit = 2.5f;
+    private float movingDirection = 1.0f;
+    private float movingTimer;
+
     private float shootingTimer;
     // Start is called before the first frame update
     void Start()
@@ -33,5 +40,51 @@ public class GameController : MonoBehaviour
             enemyMissileRb.velocity = new Vector2(0, -shootingSpeed);
             Destroy(enemyMissile, 3f);
         }
+
+        // moving logic
+        movingTimer -= Time.deltaTime;
+        if (movingTimer <= 0f)
+        {
+            movingTimer = movingInterval;
+            enemyContainer.transform.position = new Vector2(enemyContainer.transform.position.x + (movingDistance * movingDirection), enemyContainer.transform.position.y);
+            if (movingDirection > 0)
+            {
+                float rightmostPosition = 0f;
+                foreach (Enemy enemy in GetComponentsInChildren<Enemy>())
+                {
+                    if (enemy.transform.position.x > rightmostPosition)
+                    {
+                        rightmostPosition = enemy.transform.position.x;
+                    }
+                }
+                if (rightmostPosition > horizontalLimit)
+                {
+                    movingDirection *= -1;
+                    enemyContainer.transform.position = new Vector2(enemyContainer.transform.position.x, enemyContainer.transform.position.y - movingDistance);
+                }
+             }
+                else
+                {
+                    float leftmostPosition = 0f;
+                    foreach (Enemy enemy in GetComponentsInChildren<Enemy>())
+                    {
+                        if (enemy.transform.position.x < leftmostPosition)
+                        {
+                            leftmostPosition = enemy.transform.position.x;
+                        }
+                    }
+                    if (leftmostPosition < -horizontalLimit)
+                    {
+                        movingDirection *= -1;
+                        enemyContainer.transform.position = new Vector2(
+                          enemyContainer.transform.position.x,
+                          enemyContainer.transform.position.y - movingDistance
+                        );
+                    }
+                
+            }
+        }
     }
 }
+            
+        
