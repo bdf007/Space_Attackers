@@ -190,8 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cd4d0521baadb438ece30f2860cacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 3
   horizontalLimit: 2.5
+  missilePrefab: {fileID: 4034015638249747227, guid: fe949c586b3bdad45b6b1013877e5c7e, type: 3}
 --- !u!212 &442040575
 SpriteRenderer:
   m_ObjectHideFlags: 0
