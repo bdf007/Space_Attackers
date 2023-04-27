@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float missileCooldown = 3f;
     public float missileTimer;
     private bool fired = false;
+    public GameObject explosionPrefab;
     private Rigidbody2D playerRb;
 
     public static Player instance;
@@ -71,5 +72,19 @@ public class Player : MonoBehaviour
             fired = false;
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // destroy the player if it collides with an enemy missile
+        if (collision.gameObject.CompareTag("EnemyMissile"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            GameObject explosion = Instantiate(explosionPrefab);
+            explosion.transform.SetParent(transform.parent);
+            explosion.transform.position = transform.position;
+            Destroy(explosion.gameObject, 1.5f);
+        }
     }
 }

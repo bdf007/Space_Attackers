@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
         {
             // create an explosion
             GameObject explosion = Instantiate(explosionPrefab);
-            explosion.transform.SetParent(transform.parent.parent);
+            explosion.transform.SetParent(transform.parent);
             explosion.transform.position = transform.position;
             // destroy the explision
             Destroy(explosion, 1.5f);

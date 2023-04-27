@@ -451,7 +451,7 @@ MonoBehaviour:
   speed: 3
   horizontalLimit: 2.5
   missilePrefab: {fileID: 4034015638249747227, guid: fe949c586b3bdad45b6b1013877e5c7e, type: 3}
-  missileForce: 1
+  missileForce: 2
   missieDestroyTime: 5
   missileCooldown: 3
   missileTimer: 0
@@ -1259,6 +1259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1066117287}
+  - component: {fileID: 1066117288}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1284,6 +1285,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1066117288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066117286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd9f981ffc43d64a8f60236b9572ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingInterval: 2
+  shootingSpeed: 2
+  enemyMissilePrefab: {fileID: 4034015638249747227, guid: 00481f3c8f507f7428ded68c0ba24071, type: 3}
 --- !u!4 &1073399492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8610434720702351846, guid: 6c64db7f11a5feb45844444d71d8fda1, type: 3}
